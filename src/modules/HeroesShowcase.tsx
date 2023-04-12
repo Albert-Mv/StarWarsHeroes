@@ -25,7 +25,7 @@ const HeroesShowcase: FC = () => {
       }}
     >
       {isLoading ? (
-        <CircularProgress />
+        <Box sx={{display: "flex", flexGrow: 1, alignItems: "center "}}><CircularProgress /></Box>
       ) : (
         <Grid container spacing={2} sx={{ flex: "1", p: 2 }}>
           {heroes.map((item) => (
