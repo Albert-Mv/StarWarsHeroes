@@ -1,9 +1,11 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { IHero } from "../../types/IHero";
 import { IHeroField } from "../../types/IHeroField";
+import { IHeroState } from "../../types/IHeroState";
 
-const initialHeroState: IHero = {
-  name: "Luke",
+const initialHeroState: IHeroState = {
+  isDirty: false,
+  name: "",
   birth_year: "",
   eye_color: "",
   gender: "",
@@ -25,17 +27,20 @@ export const heroSlice = createSlice({
   name: "hero",
   initialState: initialHeroState,
   reducers: {
-    setHeroData: (_, action: PayloadAction<IHero>) => {
+    setHeroData: (state: IHeroState, action: PayloadAction<IHero>) => {
       return {
+        ...state,
         ...action.payload,
+        isDirty: true,
       };
     },
-    updateHeroField: (state: IHero, action: PayloadAction<IHeroField>) => {
+    updateHeroField: (state: IHeroState, action: PayloadAction<IHeroField>) => {
       const { field, value } = action.payload;
 
       return {
         ...state,
         [field]: value,
+        isDirty: true,
       };
     },
     clearHeroData: () => {

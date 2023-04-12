@@ -1,16 +1,14 @@
 import React, { FC } from "react";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import Header from "../../modules/Header";
+import Footer from "../../modules/Footer";
+import HeroInfo from "../../components/HeroInfo";
 
 const Hero: FC = () => {
-  const { id } = useParams();
-  const name = useSelector<RootState, string>((state) => state.hero.name);
-
   return (
     <>
-      <span>Hero ID: {id}</span>
-      <div>Hero name: {name}</div>
+      <Header />
+      <HeroInfo />
+      <Footer />
     </>
   );
 };

@@ -1,11 +1,14 @@
 import React, { FC } from "react";
-import { Link } from "react-router-dom";
+import HeroesShowcase from "../../modules/HeroesShowcase";
+import Header from "../../modules/Header";
+import Footer from "../../modules/Footer";
 
 const Home: FC = () => {
   return (
     <>
-      <div>Home Page</div>
-      <Link to={`heroes/1`}>Hero</Link>
+      <Header />
+      <HeroesShowcase />
+      <Footer />
     </>
   );
 };
