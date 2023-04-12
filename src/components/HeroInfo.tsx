@@ -9,6 +9,7 @@ import {
   setHeroData,
   updateHeroField,
 } from "../redux/slices/hero";
+import { Box, Button, Grid } from "@mui/material";
 
 const HeroInfo: FC = React.memo(() => {
   const { id } = useParams();
@@ -54,15 +55,17 @@ const HeroInfo: FC = React.memo(() => {
   );
 
   const getFields = useCallback(() => {
-    return Object.entries(
-      ((isLocalDirty ? localHero : storeHero) as object) || {}
-    )
-      .sort((a, b) => (a[0] > b[0] ? -1 : 1))
-      .map((item) => {
-        if (typeof item[1] == "string") {
-          return generateField(item[0] as keyof IHero, item[1]);
-        }
-      });
+    return (
+      <Grid container spacing={2} p={2}>
+      {Object.entries(((isLocalDirty ? localHero : storeHero) as object) || {})
+        .sort((a, b) => (a[0] > b[0] ? -1 : 1))
+        .map((item) => {
+          if (typeof item[1] == "string") {
+            return generateField(item[0] as keyof IHero, item[1]);
+          }
+        })}
+      </Grid>
+    );
   }, [isEditing, localHero, storeHero]);
 
   const onSave = useCallback(() => {
@@ -82,17 +85,33 @@ const HeroInfo: FC = React.memo(() => {
   }, []);
 
   return (
-    <>
+    <Box
+      sx={{
+        boxSizing: "border-box",
+        width: 1,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
+        flex: "1",
+      }}
+    >
       {getFields()}
-      {isEditing ? (
-        <button onClick={onSave}>Save</button>
-      ) : (
-        <button onClick={onEdit}>Edit</button>
-      )}
-      <button onClick={onReset} disabled={isEditing}>
-        Reset
-      </button>
-    </>
+      <Box sx={{ display: "flex", flexFlow: "row", p: 2}} gap={1}>
+        {isEditing ? (
+          <Button onClick={onSave} variant="contained">
+            Save
+          </Button>
+        ) : (
+          <Button onClick={onEdit} variant="contained">
+            Edit
+          </Button>
+        )}
+        <Button onClick={onReset} disabled={isEditing} variant="contained">
+          Reset
+        </Button>
+      </Box>
+    </Box>
   );
 });
 

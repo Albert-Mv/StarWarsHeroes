@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { getHeroes } from "../api/v1.0/api";
 import {
   addHeroes,
@@ -9,8 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { IPagination } from "../types/IPagination";
 import { RootState } from "../redux/store";
 import { useSearchParams } from "react-router-dom";
+import Pagination from "@mui/material/Pagination/Pagination";
 
-const Pagination: React.FC = () => {
+const CustomPagination: React.FC = () => {
   const [searchParams] = useSearchParams();
   const [currentPage, setCurrentPage] = useState<number>(
     Number(searchParams.get("page")) || 1
@@ -20,19 +21,10 @@ const Pagination: React.FC = () => {
     (state) => state.heroes.pagination
   );
   const dispatch = useDispatch();
-  const totalPages = useMemo(() => Math.ceil(heroesCount / 10), [heroesCount]);
-
-  const [pages, setPages] = useState<number[]>([]);
-
-  useEffect(() => {
-    const startPage = Math.max(1, currentPage - 1);
-    const endPage = Math.min(totalPages, currentPage + 1);
-    setPages(
-      [...Array(endPage - startPage + 1)].map(
-        (_, i) => startPage + i
-      ) as number[]
-    );
-  }, [currentPage, totalPages]);
+  const totalPages = useMemo<number>(
+    () => Math.ceil(heroesCount / 10),
+    [heroesCount]
+  );
 
   const loadData = useCallback((page: number) => {
     setCurrentPage(page);
@@ -47,28 +39,13 @@ const Pagination: React.FC = () => {
     });
   }, []);
 
-  const handleClick = useCallback(
-    (page: number) => {
-      if (page >= 1 && page <= totalPages) {
-        loadData(page);
-      }
-    },
-    [loadData, totalPages]
-  );
+  const handleChange = (event: React.ChangeEvent<unknown>, page: number) => {
+    loadData(page);
+  };
 
   return (
-    <div>
-      {pages.map((page) => (
-        <button
-          key={page}
-          onClick={() => handleClick(page)}
-          className={currentPage === page ? "active" : ""}
-        >
-          {page}
-        </button>
-      ))}
-    </div>
+    <Pagination count={totalPages} page={currentPage} onChange={handleChange} />
   );
 };
 
-export default Pagination;
+export default CustomPagination;

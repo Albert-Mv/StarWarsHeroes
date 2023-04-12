@@ -40,7 +40,7 @@ const App: FC = () => {
       setTimeout(() => {
         dispatch(setErrorMessage(""));
       }, 2000);
-  }, [errorMessage]);
+  }, [errorMessage, dispatch]);
 
   useEffect(() => {
     if (!isStoreDirty) {
@@ -61,7 +61,7 @@ const App: FC = () => {
         dispatch(setIsLoading(false));
       });
     }
-  }, [isStoreDirty]);
+  }, [isStoreDirty, dispatch]);
 
   return <RouterProvider router={router} />;
 };
