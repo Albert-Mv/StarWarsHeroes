@@ -1,6 +1,6 @@
-import { IHero } from "./IHero";
+import { type IHero } from './IHero'
 
 export interface IHeroField {
-  field: keyof IHero;
-  value: string | string[];
+  field: keyof IHero
+  value: string | string[]
 }

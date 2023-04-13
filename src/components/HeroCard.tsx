@@ -1,32 +1,32 @@
-import React, { FC } from "react";
-import { IHero } from "../types/IHero";
-import { Link } from "react-router-dom";
-import { Card, CardContent, Typography } from "@mui/material";
+import React, { type FC } from 'react'
+import { type IHero } from '../types/IHero'
+import { Link } from 'react-router-dom'
+import { Card, CardContent, Typography } from '@mui/material'
 
-interface IHeroCard extends Pick<IHero, "name"> {}
+type IHeroCard = Pick<IHero, 'name'>
 
 const HeroCard: FC<IHeroCard> = (props: IHeroCard) => {
-  const { name } = props;
+  const { name } = props
 
   return (
     <Card
       elevation={3}
       sx={{
         maxWidth: 200,
-        ":hover": { bgcolor: "lightgray" },
-        height: {xs: 1, md: 140}
+        ':hover': { bgcolor: 'lightgray' },
+        height: { xs: 1, md: 140 },
       }}
     >
       <CardContent>
-        <Typography gutterBottom variant="button" component="div">
+        <Typography gutterBottom variant='button' component='div'>
           {name}
         </Typography>
-        <Typography variant="subtitle2" color="text.secondary">
+        <Typography variant='subtitle2' color='text.secondary'>
           <Link to={`heroes/${name}`}>Learn more</Link>
         </Typography>
       </CardContent>
     </Card>
-  );
-};
+  )
+}
 
-export default HeroCard;
+export default HeroCard

@@ -1,63 +1,60 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IHeroesState } from "../../types/IHeroesState";
-import { IHero } from "../../types/IHero";
-import { IPagination } from "../../types/IPagination";
+import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { type IHeroesState } from '../../types/IHeroesState'
+import { type IHero } from '../../types/IHero'
+import { type IPagination } from '../../types/IPagination'
 
 const initialHeroesState: IHeroesState = {
   list: [],
   isDirty: false,
-  errorMessage: "",
+  errorMessage: '',
   isLoading: false,
   pagination: {
-    prev: "",
-    next: "",
+    prev: '',
+    next: '',
     heroesCount: 0,
   },
-};
+}
 
 export const heroesSlice = createSlice({
-  name: "heroes",
+  name: 'heroes',
   initialState: initialHeroesState,
   reducers: {
     addHero: (state: IHeroesState, action: PayloadAction<IHero>) => {
-      state = state.isDirty ? state : { ...state, isDirty: true };
-      state.list.push(action.payload);
+      state = state.isDirty ? state : { ...state, isDirty: true }
+      state.list.push(action.payload)
 
-      return state;
+      return state
     },
     addHeroes: (state: IHeroesState, action: PayloadAction<IHero[]>) => {
-      state = state.isDirty ? state : { ...state, isDirty: true };
-      state.list = action.payload;
+      state = state.isDirty ? state : { ...state, isDirty: true }
+      state.list = action.payload
 
-      return state;
+      return state
     },
     removeHeroByName: (state: IHeroesState, action: PayloadAction<string>) => {
-      const name = action.payload;
-      state.list = state.list.filter((item) => item.name === name);
+      const name = action.payload
+      state.list = state.list.filter((item) => item.name === name)
 
-      return state;
+      return state
     },
     setErrorMessage: (state: IHeroesState, action: PayloadAction<string>) => {
-      state = state.isDirty ? state : { ...state, isDirty: true };
-      state.errorMessage = action.payload;
+      state = state.isDirty ? state : { ...state, isDirty: true }
+      state.errorMessage = action.payload
 
-      return state;
+      return state
     },
     setIsLoading: (state: IHeroesState, action: PayloadAction<boolean>) => {
-      state.isLoading = action.payload;
+      state.isLoading = action.payload
 
-      return state;
+      return state
     },
-    setPagination: (
-      state: IHeroesState,
-      action: PayloadAction<IPagination>
-    ) => {
-      state.pagination = action.payload;
+    setPagination: (state: IHeroesState, action: PayloadAction<IPagination>) => {
+      state.pagination = action.payload
 
-      return state;
+      return state
     },
   },
-});
+})
 
 export const {
   addHero,
@@ -66,6 +63,6 @@ export const {
   setErrorMessage,
   setIsLoading,
   setPagination,
-} = heroesSlice.actions;
+} = heroesSlice.actions
 
-export default heroesSlice.reducer;
+export default heroesSlice.reducer

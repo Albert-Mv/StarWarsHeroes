@@ -1,5 +1,5 @@
-import { IHero } from "./IHero";
+import { type IHero } from './IHero'
 
 export interface IHeroState extends IHero {
-  isDirty: boolean;
+  isDirty: boolean
 }
