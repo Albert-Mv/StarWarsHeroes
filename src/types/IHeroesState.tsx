@@ -1,5 +1,5 @@
-import { type IHero } from './IHero'
-import { type IPagination } from './IPagination'
+import { IHero } from './IHero';
+import { IPagination } from './IPagination';
 
 export interface IHeroesState {
   list: IHero[]

@@ -1,8 +1,8 @@
-import React, { type FC } from 'react'
-import HeroesShowcase from '../../modules/HeroesShowcase'
-import Header from '../../modules/Header'
-import Footer from '../../modules/Footer'
-import { Container } from '@mui/material'
+import React, { FC } from 'react';
+import HeroesShowcase from '../../modules/HeroesShowcase';
+import Header from '../../modules/Header';
+import Footer from '../../modules/Footer';
+import { Container } from '@mui/material';
 
 const Home: FC = () => {
   return (
@@ -14,7 +14,7 @@ const Home: FC = () => {
       <HeroesShowcase />
       <Footer />
     </Container>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

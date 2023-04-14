@@ -1,5 +1,5 @@
-import { Grid, TextField, Typography } from '@mui/material'
-import React, { type FC } from 'react'
+import { Grid, TextField, Typography } from '@mui/material';
+import React, { FC } from 'react';
 
 interface IEditableField {
   name: string
@@ -9,7 +9,7 @@ interface IEditableField {
 }
 
 const EditableField: FC<IEditableField> = React.memo((props: IEditableField) => {
-  const { name, value, onChange, isEditable } = props
+  const { name, value, onChange, isEditable } = props;
 
   return (
     // <Box sx={{ display: "flex", flexFlow: "row", alignItems: "flex-end" }}>
@@ -31,7 +31,7 @@ const EditableField: FC<IEditableField> = React.memo((props: IEditableField) => 
         )}
       </Grid>
     </>
-  )
-})
+  );
+});
 
-export default EditableField
+export default EditableField;

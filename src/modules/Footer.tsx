@@ -3,7 +3,7 @@ import {
   Box,
   Card,
   CardContent,
-  type ColorPaletteProp,
+  ColorPaletteProp,
   Divider,
   Link,
   List,
@@ -12,12 +12,11 @@ import {
   ListSubheader,
   Sheet,
   Typography,
-} from '@mui/joy'
-import React, { type FC, useState } from 'react'
+} from '@mui/joy';
+import React, { FC } from 'react';
 
 const Footer: FC = () => {
-  // eslint-disable-next-line
-  const [color, setColor] = useState<ColorPaletteProp>('neutral')
+  const color = 'neutral' as ColorPaletteProp;
 
   const getCard = (title: string, linkText: string, link: string, imgUrl: string): JSX.Element => {
     return (
@@ -42,8 +41,8 @@ const Footer: FC = () => {
           </Typography>
         </CardContent>
       </Card>
-    )
-  }
+    );
+  };
 
   return (
     <Box sx={{ width: 1, bottom: 0 }}>
@@ -120,7 +119,7 @@ const Footer: FC = () => {
         </Box>
       </Sheet>
     </Box>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

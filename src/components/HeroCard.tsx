@@ -1,12 +1,12 @@
-import React, { type FC } from 'react'
-import { type IHero } from '../types/IHero'
-import { Link } from 'react-router-dom'
-import { Card, CardContent, Typography } from '@mui/material'
+import React, { FC } from 'react';
+import { IHero } from '../types/IHero';
+import { Link } from 'react-router-dom';
+import { Card, CardContent, Typography } from '@mui/material';
 
 type IHeroCard = Pick<IHero, 'name'>
 
 const HeroCard: FC<IHeroCard> = (props: IHeroCard) => {
-  const { name } = props
+  const { name } = props;
 
   return (
     <Card
@@ -26,7 +26,7 @@ const HeroCard: FC<IHeroCard> = (props: IHeroCard) => {
         </Typography>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default HeroCard
+export default HeroCard;

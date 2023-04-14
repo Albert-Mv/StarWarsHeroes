@@ -18,6 +18,7 @@ module.exports = {
   },
   plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
   rules: {
+    "semi": [2, "always"],
     'react/react-in-jsx-scope': 'off',
     camelcase: ['error', { ignoreDestructuring: true, properties: 'never' }],
     'spaced-comment': 'error',

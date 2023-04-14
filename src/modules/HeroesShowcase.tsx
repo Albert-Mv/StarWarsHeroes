@@ -1,14 +1,14 @@
-import React, { type FC } from 'react'
-import { useSelector } from 'react-redux'
-import { type RootState } from '../redux/store'
-import { type IHero } from '../types/IHero'
-import HeroCard from '../components/HeroCard'
-import Pagination from '../components/Pagination'
-import { Box, CircularProgress, Grid } from '@mui/material'
+import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
+import { IHero } from '../types/IHero';
+import HeroCard from '../components/HeroCard';
+import Pagination from '../components/Pagination';
+import { Box, CircularProgress, Grid } from '@mui/material';
 
 const HeroesShowcase: FC = () => {
-  const heroes = useSelector<RootState, IHero[]>((state) => state.heroes.list)
-  const isLoading = useSelector<RootState, boolean>((state) => state.heroes.isLoading)
+  const heroes = useSelector<RootState, IHero[]>((state) => state.heroes.list);
+  const isLoading = useSelector<RootState, boolean>((state) => state.heroes.isLoading);
 
   return (
     <Box
@@ -39,7 +39,7 @@ const HeroesShowcase: FC = () => {
         <Pagination />
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default HeroesShowcase
+export default HeroesShowcase;
