@@ -1,12 +1,12 @@
 import { IHero } from '../../types/IHero';
 
-interface ApiResponse<T> {
+export interface ApiResponse<T> {
   error: boolean
   response?: T
   message?: string
 }
 
-async function makeRequest<T>(
+export async function makeRequest<T>(
   url: string,
   method: 'GET' | 'POST' = 'GET',
 ): Promise<ApiResponse<T>> {
@@ -35,10 +35,10 @@ async function makeRequest<T>(
   }
 }
 
-interface IGetHeroes {
+export interface IGetHeroes {
   count: number
-  next: string
-  previous: string
+  next: string | null
+  previous: string | null
   results: IHero[]
 }
 
